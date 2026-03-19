@@ -6,122 +6,71 @@ Professor: José Carlos Flores
 Turma: ESOFT3A
 Exercício: 12 - Criação de Classes, Objetos e Herança
 Componentes:
-
-
  Guilherme Garcia Da cruz - 25229817-2
  Lucas Henrique Zeferino - 25119616-2
  Maikon Vinicio Duarte dos Santos - 25165588-2
  
- 
- 
 Data: 05 de Março de 2026
-Descritivo: Escreva um programa que use herança para criar uma classe Aluno que herda de Pessoa e adiciona um
-atributo matricula.
+Descritivo: Escreva um programa que use herança para criar uma classe Aluno que herda de Pessoa e adiciona um atributo matricula.
 *******************************************************************************/
-public class Pessoa {
 
-    // Atributos privados — só acessíveis dentro desta classe
-    private String nome;   // Armazena o nome da pessoa
-    private int idade;     // Armazena a idade da pessoa
+class Pessoa {
 
-    // -----------------------------------------------
-    // CONSTRUTOR de Pessoa
-    // É chamado ao criar um objeto com: new Pessoa("Ana", 25)
-    // Recebe nome e idade e atribui aos atributos da classe
-    // -----------------------------------------------
+    private String nome;
+    private int idade;
+
     public Pessoa(String nome, int idade) {
-        this.nome = nome;   // "this.nome" = atributo da classe | "nome" = parâmetro recebido
+        this.nome = nome;   
         this.idade = idade;
     }
 
-    // -----------------------------------------------
-    // MÉTODO: exibirDados()
-    // Imprime no console o nome e a idade da pessoa
-    // Pode ser sobrescrito por subclasses (como Aluno)
-    // -----------------------------------------------
     public void exibirDados() {
         System.out.println("Nome: " + nome);
         System.out.println("Idade: " + idade);
     }
 
-    // -----------------------------------------------
-    // GETTER: getNome()
-    // Retorna o valor do atributo privado "nome"
-    // Necessário pois "nome" é private e não acessível diretamente de fora
-    // -----------------------------------------------
     public String getNome() { return nome; }
-
-    // -----------------------------------------------
-    // GETTER: getIdade()
-    // Retorna o valor do atributo privado "idade"
-    // -----------------------------------------------
     public int getIdade() { return idade; }
 }
 
 
-// ==========================================
-// CLASSE FILHA: Aluno
-// Herda tudo de Pessoa e adiciona o atributo "matricula"
-// O "extends Pessoa" significa que Aluno É UMA Pessoa
-// ==========================================
 class Aluno extends Pessoa {
 
-    // Atributo exclusivo de Aluno — não existe em Pessoa
     private String matricula;
 
-    // -----------------------------------------------
-    // CONSTRUTOR de Aluno
-    // Chamado ao criar: new Aluno("Maria", 20, "2023001")
-    // Usa super() para aproveitar o construtor da classe pai (Pessoa)
-    // e inicializa também o atributo próprio "matricula"
-    // -----------------------------------------------
     public Aluno(String nome, int idade, String matricula) {
-        super(nome, idade);         // Chama o construtor de Pessoa com nome e idade
-        this.matricula = matricula; // Inicializa o atributo próprio de Aluno
+        super(nome, idade);
+        this.matricula = matricula;
     }
 
-    // -----------------------------------------------
-    // MÉTODO SOBRESCRITO: exibirDados()
-    // @Override indica que este método substitui o da classe pai
-    // Primeiro chama super.exibirDados() para mostrar nome e idade,
-    // depois adiciona a exibição da matrícula
-    // -----------------------------------------------
     @Override
     public void exibirDados() {
-        super.exibirDados();                          // Executa o exibirDados() de Pessoa
-        System.out.println("Matrícula: " + matricula); // Adiciona a matrícula na exibição
+        super.exibirDados();
+        System.out.println("Matrícula: " + matricula);
     }
 
-    // -----------------------------------------------
-    // GETTER: getMatricula()
-    // Retorna o valor do atributo privado "matricula"
-    // -----------------------------------------------
     public String getMatricula() { return matricula; }
 }
 
 
-// ==========================================
-// CLASSE PRINCIPAL: Main
-// Ponto de entrada do programa — o Java sempre começa pelo main()
-// ==========================================
-class Main {
+public class Main {
 
-    // -----------------------------------------------
-    // MÉTODO: main()
-    // É o primeiro método executado quando o programa roda
-    // "public static void" = acessível, não precisa de objeto, não retorna nada
-    // "String[] args" = argumentos opcionais passados pelo terminal
-    // -----------------------------------------------
     public static void main(String[] args) {
 
-        // Cria o primeiro aluno passando nome, idade e matrícula pelo construtor
+        // Cria o primeiro aluno
         Aluno a1 = new Aluno("Guilherme", 20, "2023001");
-        a1.exibirDados(); // Chama exibirDados() de Aluno → mostra nome, idade e matrícula
+        a1.exibirDados(); 
 
-        System.out.println("---"); // Separador visual entre os dois alunos
+        System.out.println("---"); // Separador visual
 
-        // Cria o segundo aluno com dados diferentes
+        // Cria o segundo aluno
         Aluno a2 = new Aluno("Lucas", 22, "2023002");
-        a2.exibirDados(); // Mesmo método, dados diferentes
+        a2.exibirDados(); 
+        
+        System.out.println("---"); // Separador visual
+
+        // Cria o terceiro aluno (Maikon adicionado aqui!)
+        Aluno a3 = new Aluno("Maikon", 20, "2023003");
+        a3.exibirDados(); 
     }
 }
